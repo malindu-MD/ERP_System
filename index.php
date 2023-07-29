@@ -176,7 +176,8 @@
 						  
 					      
 					   </table>
-					   
+
+		   
 					
 					   
 					   
@@ -192,17 +193,18 @@
 					
 					
 									   <!----add-modal start--------->
-		<div class="modal fade" tabindex="-1" id="addEmployeeModal" role="dialog">
+<div class="modal fade" tabindex="-1" id="addEmployeeModal" role="dialog">
   <div class="modal-dialog" role="document">
+	<form method="POST">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Add New Item</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
-        </button>
+        </button> -->
       </div>
       <div class="modal-body">
-         <form > 
+		xxx
         <div class="form-group">
 		    <label>Item Code</label>
 			<input type="text" name="itemcode" class="form-control" required>
@@ -213,40 +215,46 @@
 		</div>
 		<div class="form-group">
 		    <label>Item category</label>
-        <select class="form-control" id="exampleFormControlSelect1" name="subcategory">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>	</div>
-    <div class="form-group">
+            <select class="form-control" id="exampleFormControlSelect1" name="subcategory">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            </select>	
+		</div>
+         <div class="form-group">
 		    <label>Item Sub Category</label>
-        <select class="form-control" id="exampleFormControlSelect1" name="category">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>	</div>
+            <select class="form-control" id="exampleFormControlSelect1" name="category">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            </select>	
+		</div>
 		<div class="form-group">
 		    <label>Quantity</label>
 			<input type="number" name="Quantity" class="form-control" required>
 		</div>
-    <div class="form-group">
+         <div class="form-group">
 		    <label>Unit Price</label>
 			<input type="number" name="Unitprice" class="form-control" required>
 		</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="submit" class="btn btn-success">Add</button>
-      </div>
 
-         </form> 
+       </div>
+	  
+    
+      <div class="modal-footer">
+	    <input type="reset"  class="btn btn-secondary" value="Cancel" >
+		<input type="submit"  class="btn btn-success" value="Add" >
+
+        
+      </div>
 
 
     </div>
+</form>
   </div>
 </div>
 
@@ -257,7 +265,7 @@
 					   
 					   
 				   <!----edit-modal start--------->
-		<div class="modal fade" tabindex="-1" id="editEmployeeModal" role="dialog">
+	<div class="modal fade" tabindex="-1" id="editEmployeeModal" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
