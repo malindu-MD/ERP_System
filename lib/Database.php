@@ -43,6 +43,23 @@ class Database{
     }
 
 
+    //select
+
+    public function select($query){
+         
+      $result=mysqli_query($this->link,$query);
+      if(mysqli_num_rows($result)>0){
+         
+         return $result;
+          
+      }
+      else{
+        return false;
+      }
+
+    }
+
+
 }
 
 

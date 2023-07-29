@@ -22,8 +22,8 @@
         $itemname=$data['itemname'];
         $unitprice=$data['Unitprice'];
         $quantity=$data['Quantity'];
-        $category="1";
-        $subcategory="2";
+        $category=$data['category'];
+        $subcategory=$data['subcategory'];
 
 
         if(empty($itemcode) || empty($unitprice) || empty($itemname) || empty($quantity) || empty($category) || empty($subcategory)  ){
@@ -43,6 +43,13 @@
 
 
 
+    }
+
+    public function getAllitem(){
+        
+          $query="SELECT * FROM item ORDER BY id DESC";
+          $result=$this->db->select($query);
+          return $result;
     }
        
 

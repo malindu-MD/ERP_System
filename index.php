@@ -2,7 +2,13 @@
 <?php
 
  include_once 'classes/Item.php';
+ include_once 'classes/Category.php';
+ include_once 'classes/SubCategory.php';
+
+
  $it=new Item();
+ $ca=new Category();
+ $subca=new SubCategory();
 
  if($_SERVER['REQUEST_METHOD']=='POST'){
 
@@ -53,21 +59,21 @@
 		</div>
 		<ul class="list-unstyled component m-0">
 		  <li class="active">
-		  <a href="#" class="dashboard"><i class="material-icons">dashboard</i>dashboard </a>
+		  <a href="#" class="dashboard"><i class="material-icons"></i> Customer List</a>
 		  </li>
                    <li class="active">
-		  <a href="#" class="dashboard"><i class="material-icons">dashboard</i>dashboard </a>
+		  <a href="#" class="dashboard"><i class="material-icons"></i>Item List </a>
 		  </li>
 		  
 		  <li class="dropdown">
 		  <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" 
 		  class="dropdown-toggle">
-		  <i class="material-icons">aspect_ratio</i>Layouts
+		  <i class="material-icons"></i>Reports
 		  </a>
-		  <ul class="collapse list-unstyled menu" id="homeSubmenu1">
-		     <li><a href="#">layout 1</a></li>
-			 <li><a href="#">layout 2</a></li>
-			 <li><a href="#">layout 3</a></li>
+		  <ul class="collapse active" id="homeSubmenu1">
+		     <li><a href="#">Invoice report</a></li>
+			 <li><a href="#">Invoice item report</a></li>
+			 <li><a href="#">Item report</a></li>
 		  </ul>
 		  </li>
 		  
@@ -103,7 +109,7 @@
 				 </div>
 				 
 				 <div class="xp-breadcrumbbar text-center">
-				    <h4 class="page-title">Dashboard</h4>
+				    <h4 class="page-title">Item List</h4>
 				
 				 </div>
 				 
@@ -123,17 +129,14 @@
 					   <div class="table-title">
 					     <div class="row">
 						     <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
-							    <h2 class="ml-lg-2">Manage  Employees</h2>
+							    <h2 class="ml-lg-2">Manage  Items</h2>
 							 </div>
 							 <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
 							   <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
 							   <i class="material-icons">&#xE147;</i>
-							   <span>Add New Employees</span>
+							   <span>Add New Item</span>
 							   </a>
-							   <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal">
-							   <i class="material-icons">&#xE15C;</i>
-							   <span>Delete</span>
-							   </a>
+							  
 							 </div>
 					     </div>
 					   </div>
@@ -143,22 +146,32 @@
 						     <tr>
 							 <th><span class="custom-checkbox">
 						</th>
-							 <th>Name</th>
-							 <th>Email</th>
-							 <th>Address</th>
-							 <th>Phone</th>
+							 <th>Item Code</th>
+							 <th>Item Name</th>
+							 <th>Quantity</th>
+							 <th>Unit Price</th>
 							 <th>Actions</th>
 							 </tr>
 						  </thead>
 						  
 						  <tbody>
-						      <tr>
+
+						    <?php
+							
+							$allitem=$it->getAllitem();
+							if($allitem){
+
+								while($row=mysqli_fetch_assoc($allitem)){
+
+                                  ?>
+
+<tr>
 							 <th><span class="custom-checkbox">
 							</th>
-							 <th>Thomas Hardy</th>
-							 <th>ThomasHardy@gmail.com</th>
-							 <th>90r parkdground poland Usa.</th>
-							 <th>(78-582552-9)</th>
+							 <th><?=$row['item_code']?></th>
+							 <th><?=$row['item_name']?></th>
+							 <th><?=$row['quantity']?></th>
+							 <th><?=$row['unit_price']?></th>
 							 <th>
 							    <a href="#editEmployeeModal" class="edit" data-toggle="modal">
 							   <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
@@ -169,6 +182,17 @@
 							 </th>
 							 </tr>
 							 
+
+								  <?php
+                                
+
+								}
+
+							}
+							
+							
+							?>
+						     
 							 
 						
 							 
@@ -215,22 +239,56 @@
 		</div>
 		<div class="form-group">
 		    <label>Item category</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="subcategory">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            <select class="form-control" id="exampleFormControlSelect1" name="category">
+            <?php
+			
+			$allca=$ca->getCategory();
+			if($allca){
+
+				while($row1=mysqli_fetch_assoc($allca)){
+
+
+                       echo '<option value="'.$row1['id'].'">'.$row1['category'].'</option>';   
+
+
+
+				}
+
+
+
+			}
+
+
+
+			
+			?>
             </select>	
 		</div>
          <div class="form-group">
 		    <label>Item Sub Category</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="category">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            <select class="form-control" id="exampleFormControlSelect1" name="subcategory">
+			<?php
+			
+			$allsubca=$subca->getSubCategory();
+			if($allsubca){
+
+				while($row2=mysqli_fetch_assoc($allsubca)){
+
+
+                       echo '<option value="'.$row2['id'].'">'.$row2['sub_category'].'</option>';   
+
+
+
+				}
+
+
+
+			}
+
+
+
+			
+			?>
             </select>	
 		</div>
 		<div class="form-group">
