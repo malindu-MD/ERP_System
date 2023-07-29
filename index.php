@@ -71,7 +71,7 @@
 		  <i class="material-icons"></i>Reports
 		  </a>
 		  <ul class="collapse active" id="homeSubmenu1">
-		     <li><a href="#">Invoice report</a></li>
+		     <li><a href="lib/InvoiceReport.php">Invoice report</a></li>
 			 <li><a href="#">Invoice item report</a></li>
 			 <li><a href="#">Item report</a></li>
 		  </ul>
