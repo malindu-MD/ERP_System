@@ -166,12 +166,15 @@
 							 <th><?=$row['quantity']?></th>
 							 <th><?=$row['unit_price']?></th>
 							 <th>
+							       <form id="GFG"  method="POST">
+									<input type="hidden" value="<?=$row['id']?>" />
+
 							    <a href="#editEmployeeModal" class="edit" data-toggle="modal">
 							   <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-							   </a>
+							   </a></form>
 							   <a href="delete_item.php?item_id=<?=$row['id']?>" class="delete" >
 							   <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-							   </a>
+							   </a>  
 							 </th>
 							 </tr>
 							 
