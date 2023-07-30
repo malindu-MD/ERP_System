@@ -1,4 +1,12 @@
+<?php
 
+ include_once '../classes/Reports.php';
+ 
+ $re=new Reports();
+
+
+
+?>
 
 
 <!doctype html>
@@ -146,9 +154,41 @@
 						  
 						  <tbody>
 
-						 
+						  <?php
+							
+							$getre=$re->getInvoiceReport();
+							if($getre){
 
+								while($row=mysqli_fetch_assoc($getre)){
 
+                                  ?>
+
+<tr>
+							 <th><span class="custom-checkbox">
+							</th>
+							 <th><?=$row['invoice_no']?></th>
+							 <th><?=$row['date']?></th>
+							 <th><?=$row['first_name']?></th>
+							 <th><?=$row['district']?></th>
+							 <th><?=$row['item_count']?></th>
+							 <th><?=$row['amount']?></th>
+
+      
+							 <th> </th>
+							 </tr>
+							 
+
+								  <?php
+                                
+
+								}
+
+							}
+							
+							
+							?>
+						     
+     
 							
 							
 						
