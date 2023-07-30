@@ -25,7 +25,6 @@ class Database{
         return false;
       }
 
-      echo "Database connection Succesed";
 
     }
 

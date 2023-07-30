@@ -125,7 +125,7 @@
 							    <h2 class="ml-lg-2">Manage  Items</h2>
 							 </div>
 							 <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
-							   <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
+							   <a href="#addModal" class="btn btn-success" data-toggle="modal">
 							   <i class="material-icons">&#xE147;</i>
 							   <span>Add New Item</span>
 							   </a>
@@ -166,12 +166,7 @@
 							 <th><?=$row['quantity']?></th>
 							 <th><?=$row['unit_price']?></th>
 							 <th>
-							       <form id="GFG"  method="POST">
-									<input type="hidden" value="<?=$row['id']?>" />
-
-							    <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-							   <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-							   </a></form>
+							      
 							   <a href="delete_item.php?item_id=<?=$row['id']?>" class="delete" >
 							   <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
 							   </a>  
@@ -212,7 +207,7 @@
 					</div>
 					
 					
-<div class="modal fade" tabindex="-1" id="addEmployeeModal" role="dialog">
+<div class="modal fade" tabindex="-1" id="addModal" role="dialog">
   <div class="modal-dialog" role="document">
 	<form method="POST">
     <div class="modal-content">
@@ -316,40 +311,7 @@
 					   
 					   
 					   
-	<div class="modal fade" tabindex="-1" id="editEmployeeModal" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Edit Employees</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-		    <label>Name</label>
-			<input type="text" class="form-control" required>
-		</div>
-		<div class="form-group">
-		    <label>Email</label>
-			<input type="emil" class="form-control" required>
-		</div>
-		<div class="form-group">
-		    <label>Address</label>
-			<textarea class="form-control" required></textarea>
-		</div>
-		<div class="form-group">
-		    <label>Phone</label>
-			<input type="text" class="form-control" required>
-		</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success">Save</button>
-      </div>
-    </div>
-  </div>
-</div>
+	
 
 					
 					   

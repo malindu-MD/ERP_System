@@ -140,7 +140,7 @@ $dis=new District();
 							    <h2 class="ml-lg-2">Manage  Customers</h2>
 							 </div>
 							 <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
-							   <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
+							   <a href="#addModal" class="btn btn-success" data-toggle="modal">
 							   <i class="material-icons">&#xE147;</i>
 							   <span>Add New Customer</span>
 							   </a>
@@ -221,7 +221,7 @@ $dis=new District();
 					
 					
 									  
-<div class="modal fade" tabindex="-1" id="addEmployeeModal" role="dialog">
+<div class="modal fade" tabindex="-1" id="addModal" role="dialog">
   <div class="modal-dialog" role="document">
 	<form method="POST" onsubmit="return validateForm()">
     <div class="modal-content">

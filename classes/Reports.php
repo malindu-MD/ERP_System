@@ -55,7 +55,7 @@
 
     public function getItemReport(){
         
-        $query="SELECT DISTINCT item.item_name,item.quantity,item_subcategory.sub_category,item_category.category FROM item,item_subcategory,item_category WHERE item.item_category=item_category.id AND item.item_subcategory=item_subcategory.id";
+        $query="SELECT DISTINCT item.item_name,item.quantity,item_subcategory.sub_category,item_category.category FROM item,item_subcategory,item_category WHERE item.item_category=item_category.id AND item.item_subcategory=item_subcategory.id GROUP BY item.item_name";
         $result=$this->db->select($query);
         return $result;
   }
