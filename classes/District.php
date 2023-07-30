@@ -1,7 +1,7 @@
 <?php
     
    include_once '../lib/Database.php';
-   class Category{
+   class District{
     
    
    
@@ -22,9 +22,9 @@
 
     
 
-    public function getCategory(){
+    public function getDistrict(){
         
-          $query="SELECT * FROM item_category ";
+          $query="SELECT * FROM district ";
           $result=$this->db->select($query);
           return $result;
     }

@@ -1,20 +1,28 @@
+
 <?php
 
- include_once '../classes/Reports.php';
  
- $re=new Reports();
- $getre=[];
-if(isset($_POST['submit'])){
+ include_once '../classes/District.php';
+
+
+ include_once '../classes/Customer.php';
+ 
+ $cus=new Customer();
+
  if($_SERVER['REQUEST_METHOD']=='POST'){
 
-	$getre=$re->getInvoiceDate($_POST);
+     $cust=$cus->addCustomer($_POST);
 
-}
-}
+ }
 
+
+
+
+
+$dis=new District();
+ 
 
 ?>
-
 
 <!doctype html>
 <html lang="en">
@@ -39,6 +47,14 @@ if(isset($_POST['submit'])){
 	   <!--google material icon-->
       <link href="https://fonts.googleapis.com/css2?family=Material+Icons"rel="stylesheet">
 
+      <style>
+    .warning-message {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  </style>
+
   </head>
   <body>
   
@@ -50,7 +66,7 @@ if(isset($_POST['submit'])){
 	 
 	 <!-------sidebar--design------------>
 	 
-	 <div id="sidebar">
+     <div id="sidebar">
 	    <div class="sidebar-header">
 		 
 		</div>
@@ -85,6 +101,7 @@ if(isset($_POST['submit'])){
 		</ul>
 	 </div>
 	 
+	 
    
    
    
@@ -109,7 +126,7 @@ if(isset($_POST['submit'])){
 				 </div>
 				 
 				 <div class="xp-breadcrumbbar text-center">
-				    <h4 class="page-title">Invoice report</h4>
+				    <h4 class="page-title">Customer List</h4>
 				
 				 </div>
 				 
@@ -129,21 +146,14 @@ if(isset($_POST['submit'])){
 					   <div class="table-title">
 					     <div class="row">
 						     <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
-							    <h2 class="ml-lg-2">Select Date Range</h2>
+							    <h2 class="ml-lg-2">Manage  Customers</h2>
 							 </div>
-                              
-							 <div class="col-sm-6 p-0 flex justify-content-lg justify-content-center">
-                             <form class="form-inline" method="POST"  action="InvoiceReport.php">
-                             <div class="form-group mx-sm-3 ">
-    <label for="inputPassword2" class="col-form-label mr-2 ">From</label>
-    <input type="date" class="form-control" name="fromdate" >
-  </div>
-  <div class="form-group mx-sm-3 ">
-    <label for="inputPassword2" class="form-label mr-2">To</label>
-    <input type="date" class="form-control"  name="todate">
-  </div>
-  <button type="submit" class="btn btn-primary" name="submit">Search</button>
-</form>
+							 <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
+							   <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
+							   <i class="material-icons">&#xE147;</i>
+							   <span>Add New Customer</span>
+							   </a>
+							  
 							 </div>
 					     </div>
 					   </div>
@@ -153,37 +163,34 @@ if(isset($_POST['submit'])){
 						     <tr>
 							 <th><span class="custom-checkbox">
 						</th>
-							 <th>Invoice Number</th>
-							 <th>Invoice Date</th>
-							 <th>Customer</th>
-							 <th>Customer District</th>
-							 <th>Item Count</th>
-                             <th>Invoice amount</th>
+							 <th>Title</th>
+							 <th>First Name</th>
+                             <th>Last Name</th>
+                             <th>Contact Number</th>
+							
 							 </tr>
 						  </thead>
 						  
 						  <tbody>
 
-						  <?php
-							
-							if($getre){
 
-								while($row=mysqli_fetch_assoc($getre)){
+                          <?php
+							
+							$allitem=$cus->getAllCustomers();
+							if($allitem){
+
+								while($row=mysqli_fetch_assoc($allitem)){
 
                                   ?>
 
-<tr>
+                             <tr>
 							 <th><span class="custom-checkbox">
 							</th>
-							 <th><?=$row['invoice_no']?></th>
-							 <th><?=$row['date']?></th>
+							 <th><?=$row['title']?></th>
 							 <th><?=$row['first_name']?></th>
-							 <th><?=$row['district']?></th>
-							 <th><?=$row['item_count']?></th>
-							 <th><?=$row['amount']?></th>
-
-      
-							 <th> </th>
+							 <th><?=$row['last_name']?></th>
+							 <th><?=$row['contact_no']?></th>
+							
 							 </tr>
 							 
 
@@ -197,12 +204,10 @@ if(isset($_POST['submit'])){
 							
 							?>
 						     
-     
-							
-							
+
+						   
 						
-							 
-						
+					
 							 
 						  </tbody>
 						  
@@ -224,15 +229,95 @@ if(isset($_POST['submit'])){
 					</div>
 					
 					
-									   <!----add-modal start--------->
+									  
+<div class="modal fade" tabindex="-1" id="addEmployeeModal" role="dialog">
+  <div class="modal-dialog" role="document">
+	<form method="POST" onsubmit="return validateForm()">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add New Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		
+        <div class="form-group">
+		    <label>Title</label>
+			<select class="form-control" id="exampleFormControlSelect1" name="title">
+             <option value="Mr">Mr</option>
+             <option value="Mrs">Mrs</option>
+             <option value="Miss">Miss</option>
+             <option value="Dr">Dr</option>
+          </select>
+		</div>
+		<div class="form-group">
+		    <label>First Name</label>
+			<input type="text" class="form-control" pattern="[A-Za-z]+" title="Please enter only capital and lowercase letters."  name="firstname" required>
+		</div>
+        <div class="form-group">
+		    <label>Last Name</label>
+			<input type="text" class="form-control"  pattern="[A-Za-z]+" title="Please enter only capital and lowercase letters." name="lastname" required>
+		</div>
+        <div class="form-group">
+		    <label>Phone Number</label>
+            <input type="text" id="phoneNumberInput"  placeholder="07xxxxxxxx" class="form-control"  name="phonenumber" pattern="07\d{8}" title="Please enter a valid phone number starting with 947 followed by 8 digits." required>
+            <span class="warning-message" id="warningMessage"></span>
+		</div>
+		<div class="form-group">
+		    <label>District</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="district">
+            <?php
+			
+			$allca=$dis->getDistrict();
+			if($allca){
+
+				while($row1=mysqli_fetch_assoc($allca)){
+
+
+                       echo '<option value="'.$row1['id'].'">'.$row1['district'].'</option>';   
 
 
 
+				}
+
+
+
+			}
+
+
+
+			
+			?>
+           
+            </select>	
+		</div>
+       
 		
 
-					
+       </div>
+	  
+    
+      <div class="modal-footer">
+	    <input type="reset"  class="btn btn-secondary" value="Cancel" >
+		<input type="submit"  class="btn btn-success" value="Add" >
+
+        
+      </div>
+
+
+    </div>
+</form>
+  </div>
+</div>
+
+					   <!----edit-modal end--------->
 					   
 					   
+					   
+					   
+					   
+				   <!----edit-modal start--------->
 	
 		  
 		    <!------main-content-end-----------> 
@@ -277,6 +362,21 @@ if(isset($_POST['submit'])){
 		  });
 		  
 	   });
+
+
+       function validateForm() {
+      var phoneNumberInput = document.getElementById('phoneNumberInput');
+      var warningMessage = document.getElementById('warningMessage');
+
+      var isValid = phoneNumberInput.validity.valid;
+      if (!isValid) {
+        warningMessage.textContent = phoneNumberInput.validationMessage;
+        return false; // Prevent form submission
+      }
+
+      warningMessage.textContent = ''; // Clear the warning message
+      return true; // Allow form submission
+    }   
   </script>
   
   

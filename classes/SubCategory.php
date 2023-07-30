@@ -1,6 +1,6 @@
 <?php
     
-   include_once './lib/Database.php';
+   include_once '../lib/Database.php';
    class SubCategory{
     
    

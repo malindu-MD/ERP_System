@@ -47,11 +47,14 @@
 		 
 		</div>
 		<ul class="list-unstyled component m-0">
+		<li class="active">
+		  <a href="../index.php" class="dashboard"><i class="material-icons"></i> DashBoard</a>
+		  </li>
 		  <li class="active">
-		  <a href="#" class="dashboard"><i class="material-icons"></i> Customer List</a>
+		  <a href="CustomerList.php" class="dashboard"><i class="material-icons"></i> Customer List</a>
 		  </li>
                    <li class="active">
-		  <a href="#" class="dashboard"><i class="material-icons"></i>Item List </a>
+		  <a href="ItemList.php" class="dashboard"><i class="material-icons"></i>Item List </a>
 		  </li>
 		  
 		  <li class="dropdown">
@@ -60,9 +63,9 @@
 		  <i class="material-icons"></i>Reports
 		  </a>
 		  <ul class="collapse active" id="homeSubmenu1">
-		     <li><a href="/lip/InvoiceReport.php">Invoice report</a></li>
-			 <li><a href="#">Invoice item report</a></li>
-			 <li><a href="#">Item report</a></li>
+		     <li><a href="InvoiceReport.php">Invoice report</a></li>
+			 <li><a href="InvoiceItemReport.php">Invoice item report</a></li>
+			 <li><a href="ItemReport.php">Item report</a></li>
 		  </ul>
 		  </li>
 		  
@@ -143,7 +146,8 @@
 						  <tbody>
 
 						  <?php
-                            
+                            	$getre=$re->getItemReport($_POST);
+
                             
 							
 							if($getre){
@@ -155,12 +159,10 @@
                             <tr>
 							 <th><span class="custom-checkbox">
 							</th>
-							 <th><?=$row['invoice_no']?></th>
-							 <th><?=$row['date']?></th>
-							 <th><?=$row['first_name']?></th>
-							 <th><?=$row['item_name']?>(<?=$row['item_code']?>)</th>
+							 <th><?=$row['item_name']?></th>
 							 <th><?=$row['category']?></th>
-							 <th><?=$row['unit_price']?></th>
+							 <th><?=$row['sub_category']?></th>
+							 <th><?=$row['quantity']?></th>
 
       
 							 <th> </th>
