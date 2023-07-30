@@ -7,7 +7,7 @@
 if(isset($_POST['submit'])){
  if($_SERVER['REQUEST_METHOD']=='POST'){
 
-	$getre=$re->getInvoiceDate($_POST);
+	$getre=$re->getInvoiceItemReport($_POST);
 
 }
 }
@@ -106,7 +106,7 @@ if(isset($_POST['submit'])){
 				 </div>
 				 
 				 <div class="xp-breadcrumbbar text-center">
-				    <h4 class="page-title">Invoice report</h4>
+				    <h4 class="page-title">Invoice Item Report</h4>
 				
 				 </div>
 				 
@@ -130,7 +130,7 @@ if(isset($_POST['submit'])){
 							 </div>
                               
 							 <div class="col-sm-6 p-0 flex justify-content-lg justify-content-center">
-                             <form class="form-inline" method="POST"  action="InvoiceReport.php">
+                             <form class="form-inline" method="POST"  action="InvoiceItemReport.php">
                              <div class="form-group mx-sm-3 ">
     <label for="inputPassword2" class="col-form-label mr-2 ">From</label>
     <input type="date" class="form-control" name="fromdate" >
@@ -152,10 +152,10 @@ if(isset($_POST['submit'])){
 						</th>
 							 <th>Invoice Number</th>
 							 <th>Invoice Date</th>
-							 <th>Customer</th>
-							 <th>Customer District</th>
-							 <th>Item Count</th>
-                             <th>Invoice amount</th>
+							 <th>Customer Name</th>
+							 <th>Item Name & Item Code</th>
+							 <th>Item Category</th>
+                             <th>Unit Price</th>
 							 </tr>
 						  </thead>
 						  
@@ -169,15 +169,15 @@ if(isset($_POST['submit'])){
 
                                   ?>
 
-<tr>
+                            <tr>
 							 <th><span class="custom-checkbox">
 							</th>
 							 <th><?=$row['invoice_no']?></th>
 							 <th><?=$row['date']?></th>
 							 <th><?=$row['first_name']?></th>
-							 <th><?=$row['district']?></th>
-							 <th><?=$row['item_count']?></th>
-							 <th><?=$row['amount']?></th>
+							 <th><?=$row['item_name']?>(<?=$row['item_code']?>)</th>
+							 <th><?=$row['category']?></th>
+							 <th><?=$row['unit_price']?></th>
 
       
 							 <th> </th>
