@@ -51,6 +51,15 @@
           $result=$this->db->select($query);
           return $result;
     }
+
+    public function deleteItem($id){
+        
+      $query="DELETE FROM `item` WHERE id='$id'";
+      $result=$this->db->delete($query);
+      return $result;
+}
+   
+
        
 
 

@@ -22,24 +22,19 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <title>ERP</title>
-	    <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../css/bootstrap.min.css">
-	    <!----css3---->
         <link rel="stylesheet" href="../css/custom.css">
 		
 		
-		<!--google fonts -->
 	    <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 	
 	
-	   <!--google material icon-->
       <link href="https://fonts.googleapis.com/css2?family=Material+Icons"rel="stylesheet">
 
   </head>
@@ -51,7 +46,6 @@
      
 	  <div class="body-overlay"></div>
 	 
-	 <!-------sidebar--design------------>
 	 
 	 <div id="sidebar">
 	    <div class="sidebar-header">
@@ -93,7 +87,6 @@
    
       <div id="content">
 	     
-		  <!------top-navbar-start-----------> 
 		     
 		  <div class="top-navbar">
 		     <div class="xd-topbar">
@@ -118,10 +111,8 @@
 				 
 			 </div>
 		  </div>
-		  <!------top-navbar-end-----------> 
 		  
 		  
-		   <!------main-content-start-----------> 
 		     
 		      <div class="main-content">
 			     <div class="row">
@@ -178,7 +169,7 @@
 							    <a href="#editEmployeeModal" class="edit" data-toggle="modal">
 							   <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
 							   </a>
-							   <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+							   <a href="delete_item.php?item_id=<?=$row['id']?>" class="delete" >
 							   <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
 							   </a>
 							 </th>
@@ -218,16 +209,15 @@
 					</div>
 					
 					
-									   <!----add-modal start--------->
 <div class="modal fade" tabindex="-1" id="addEmployeeModal" role="dialog">
   <div class="modal-dialog" role="document">
 	<form method="POST">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Add New Item</h5>
-        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
-        </button> -->
+        </button>
       </div>
       <div class="modal-body">
 		
@@ -318,13 +308,11 @@
   </div>
 </div>
 
-					   <!----edit-modal end--------->
 					   
 					   
 					   
 					   
 					   
-				   <!----edit-modal start--------->
 	<div class="modal fade" tabindex="-1" id="editEmployeeModal" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -360,40 +348,17 @@
   </div>
 </div>
 
-					   <!----edit-modal end--------->	   
+					
 					   
 					   
-					 <!----delete-modal start--------->
-		<div class="modal fade" tabindex="-1" id="deleteEmployeeModal" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Delete Employees</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Are you sure you want to delete this Records</p>
-		<p class="text-warning"><small>this action Cannot be Undone,</small></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success">Delete</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-					   <!----edit-modal end--------->   
-					   
+		
+   
 					
 					
 				 
 			     </div>
 			  </div>
 		  
-		    <!------main-content-end-----------> 
 		  
 		 
 		 
@@ -408,15 +373,13 @@
 
 
 
-<!-------complete html----------->
 
 
 
 
 
   
-     <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    
    <script src="../js/jquery-3.3.1.slim.min.js"></script>
    <script src="../js/popper.min.js"></script>
    <script src="../js/bootstrap.min.js"></script>

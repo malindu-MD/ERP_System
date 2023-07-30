@@ -58,6 +58,18 @@ class Database{
       }
 
     }
+   //delete
+    public function delete($query){
+         
+      $result=mysqli_query($this->link,$query);
+      if($result){
+         
+        echo "good";
+          
+      }
+
+    }
+
 
 
 }
