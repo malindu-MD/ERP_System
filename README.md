@@ -1,6 +1,5 @@
 # ERP_System
 
-# I have implemented Task 1,2,3
 
 
 # How to Set Up the Project in a Local Environment
