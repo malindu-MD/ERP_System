@@ -15,13 +15,13 @@
         <link rel="stylesheet" href="css/custom.css">
 		
 		
-		<!--google fonts -->
+		
 	    <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 	
 	
-	   <!--google material icon-->
+	   
       <link href="https://fonts.googleapis.com/css2?family=Material+Icons"rel="stylesheet">
 
   </head>
@@ -33,7 +33,7 @@
      
 	  <div class="body-overlay"></div>
 	 
-	 <!-------sidebar--design------------>
+	 
 	 
 	 <div id="sidebar">
 	    <div class="sidebar-header">
